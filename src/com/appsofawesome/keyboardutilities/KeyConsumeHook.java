@@ -17,7 +17,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 public class KeyConsumeHook implements IXposedHookLoadPackage{
 	
 	private boolean catchAltTab = true;
-	private boolean catchWinTab = false;
+	private boolean catchWinTab = true;
 	
 
 
@@ -48,7 +48,7 @@ public class KeyConsumeHook implements IXposedHookLoadPackage{
 				param.setResult(0); //tell it it was not handled and let the app handle it. 
 			}
 			
-			if (catchWinTab && event.getKeyCode() == KeyEvent.KEYCODE_TAB && event.isMetaPressed()) {
+			if (catchWinTab && event.isMetaPressed()) {
 				param.setResult(0); //tell it it was not handled and let the app handle it. 
 			}		
 		}
